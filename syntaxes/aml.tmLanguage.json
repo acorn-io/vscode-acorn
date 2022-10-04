@@ -1,0 +1,152 @@
+{
+    "scopeName": "source.aml",
+    "name": "aml",
+    "patterns": [
+        {
+            "include": "#whitespace"
+        },
+        {
+            "include": "#keywords"
+        },
+        {
+            "include": "#strings"
+        },
+        {
+            "include": "#declarations"
+        },
+        {
+            "include": "#constants"
+        },
+        {
+            "include": "#comments"
+        },
+        {
+            "include": "#primitives"
+        }
+    ],
+    "repository": {
+        "keywords": {
+            "patterns": [
+                {
+                    "name": "keyword.control.aml",
+                    "match": "\\b(if|in|for|let|containers|secrets|jobs|localData|args)\\b"
+                },
+                {
+                    "name": "keyword.value.aml",
+                    "match": "\\b(null|true|false)\\b"
+                },
+                {
+                    "name": "keyword.preamble.aml",
+                    "match": "\\b(package|import)\\b"
+                },
+                {
+                    "match": "[\\+\\-\\*]|/(?![/*])",
+                    "name": "keyword.operator.aml"
+                },
+                {
+                    "match": "(?<![\\p{L}\\p{Nd}_\\$\\#])(?:div|mod|quo|rem)(?![\\p{L}\\p{Nd}_\\$\\#])",
+                    "name": "keyword.operator.word.aml"
+                },
+                {
+                    "match": "=[=~]|![=~]|<=|>=|[<](?![-=])|[>](?![=])",
+                    "name": "keyword.operator.comparison.aml"
+                },
+                {
+                    "match": "&{2}|\\|{2}|!(?![=~])",
+                    "name": "keyword.operator.logical.aml"
+                },
+                {
+                    "match": "&(?!&)|\\|(?!\\|)",
+                    "name": "keyword.operator.set.aml"
+                }
+            ]
+        },
+        "declarations": {
+            "patterns": [
+                {
+                    "name": "support.type.property-name.aml",
+                    "match": "(#\\w*)"
+                },
+                {
+                    "name": "variable.parameter.aml",
+                    "match": "(\\w*?):"
+                }
+            ]
+        },
+        "comments": {
+            "patterns": [
+                {
+                    "begin": "/\\*\\*(?!/)",
+                    "captures": {
+                        "0": {
+                            "name": "punctuation.definition.comment.aml"
+                        }
+                    },
+                    "end": "\\*/",
+                    "name": "comment.block.documentation.aml"
+                },
+                {
+                    "begin": "/\\*",
+                    "captures": {
+                        "0": {
+                            "name": "punctuation.definition.comment.aml"
+                        }
+                    },
+                    "end": "\\*/",
+                    "name": "comment.block.aml"
+                },
+                {
+                    "captures": {
+                        "1": {
+                            "name": "punctuation.definition.comment.aml"
+                        }
+                    },
+                    "match": "(//).*$\\n?",
+                    "name": "comment.line.double-slash.js"
+                }
+            ]
+        },
+        "constants": {
+            "patterns": [
+                {
+                    "match": "(?<![\\p{L}\\p{Nd}_\\$\\#])_(?!\\|)(?![\\p{L}\\p{Nd}_\\$\\#])",
+                    "name": "constant.language.top.aml"
+                },
+                {
+                    "match": "(?<![\\p{L}\\p{Nd}_\\$\\#])_\\|_(?![\\p{L}\\p{Nd}_\\$\\#])",
+                    "name": "constant.language.bottom.aml"
+                },
+                {
+                    "match": "(?<![\\p{L}\\p{Nd}_\\$\\#])null(?![\\p{L}\\p{Nd}_\\$\\#])",
+                    "name": "constant.language.null.aml"
+                },
+                {
+                    "match": "\\b((0(x|X)[0-9a-fA-F_]*)|(([0-9][0-9_]*\\.[0-9][0-9_]*)|(\\.[0-9][0-9_]*))((e|E)(\\+|-)?[0-9][0-9_]*)?|[0-9][0-9_]*)([LlFfDd]|UL|ul)?\\b",
+                    "name": "constant.numeric.aml"
+                }
+            ]
+        },
+        "primitives": {
+            "patterns": [
+                {
+                    "name": "storage.type.aml",
+                    "match": "\\b(null|bool|string|bytes|number|int|float|struct|list)\\b"
+                }
+            ]
+        },
+        "strings": {
+            "name": "string.quoted.double.aml",
+            "begin": "\"",
+            "end": "\"",
+            "patterns": [
+                {
+                    "name": "constant.character.escape.aml",
+                    "match": "\\\\."
+                }
+            ]
+        },
+        "whitespace": {
+            "match": "[ \\t\\r\\n]+"
+        }
+    }
+}

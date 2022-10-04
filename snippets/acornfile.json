@@ -1,0 +1,40 @@
+{
+    "containers": {
+        "prefix": "containers",
+        "body":[
+            "containers: ${1:name}: {",
+            "\timage: \"${2}\"",
+            "}"
+        ]
+    },
+    "args": {
+        "prefix": "args",
+        "body": [
+            "args: {}"
+        ]
+    },
+    "secrets":{
+        "prefix": "secrets",
+        "body": [
+            "secrets: ${1:name}: {",
+            "\ttype: \"${2:type}\"",
+            "\tdata: {}",
+            "}"
+        ]
+    },
+    "localData": {
+        "prefix": "localD",
+        "body": [
+            "localData: {}"
+        ]
+    },
+    "jobs": {
+        "prefix": "jobs",
+        "body": [
+            "jobs: ${1:name}: {",
+            "\timage: \"${2}\"",
+            "}"
+        ]
+    }
+
+}

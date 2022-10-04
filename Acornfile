@@ -1,0 +1,4 @@
+secrets: "db-password": {
+    type: "basic"
+    data: {}
+}

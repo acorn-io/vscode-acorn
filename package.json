@@ -1,0 +1,46 @@
+{
+    "name": "aml",
+    "displayName": "vscode-aml",
+    "description": "Syntax and completion of Acorn AML files",
+    "publisher": "Acorn Labs",
+    "version": "0.0.1",
+    "icon": "images/logo.png",
+    "engines": {
+        "vscode": "^1.65.0"
+    },
+    "contributes": {
+        "languages": [
+            {
+                "id": "aml",
+                "aliases": [
+                    "aml"
+                ],
+                "extensions": [
+                    ".aml"
+                ],
+                "filenamePatterns": [
+                    "Acornfile",
+                    "Acornfile.*",
+                    "*.acornfile"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "aml",
+                "scopeName": "source.aml",
+                "path": "./syntaxes/aml.tmLanguage.json"
+            }
+        ],
+        "snippets": [
+            {
+                "language": "aml",
+                "path": "./snippets/acornfile.json"
+            }
+        ]
+    },
+    "devDependencies": {
+        "vscode": "^1.65.0"
+    }
+}

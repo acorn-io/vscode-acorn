@@ -1,4 +1,27 @@
-secrets: "db-password": {
-    type: "basic"
+containers: test: {
+    image: "nginx"
+    sidecars: {
+        "init": {
+            image: "nginx"
+        }
+    }
+}
+
+secrets: myname: {
+    type: "opaque"
     data: {}
+}
+
+volumes: "testing": {}
+
+containers: {
+    "another-container": {
+        image: "testing"
+    }
+}
+
+containers: {
+    testing: {
+        image: "nginx"
+    }
 }

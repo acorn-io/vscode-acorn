@@ -2,8 +2,10 @@
     "containers": {
         "prefix": "containers",
         "body":[
-            "containers: ${1:name}: {",
-            "\timage: \"${2}\"",
+            "containers: {"
+                "\t${1:name}: {",
+                "\t\timage: \"${2}\"",
+                "\t}"
             "}"
         ]
     },

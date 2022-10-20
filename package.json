@@ -15,7 +15,7 @@
         "onCommand:acorn.commands.runInteractive"
     ],
     "engines": {
-        "vscode": "^1.65.0"
+        "vscode": "^1.69.0"
     },
     "contributes": {
         "configuration": {

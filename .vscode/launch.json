@@ -5,6 +5,9 @@
             "name": "Extension",
             "type": "extensionHost",
             "request": "launch",
+            "outFiles": [
+                "${workspaceFolder}/out/**/*.js"
+            ],
             "runtimeExecutable": "${execPath}",
             "args": [
                 "--extensionDevelopmentPath=${workspaceFolder}"

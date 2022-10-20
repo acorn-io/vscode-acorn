@@ -1,14 +1,41 @@
 {
-    "name": "aml",
-    "displayName": "vscode-aml",
+    "name": "acorn",
+    "displayName": "vscode-acorn",
     "description": "Syntax and completion of Acorn AML files",
     "publisher": "Acorn Labs",
     "version": "0.0.1",
     "icon": "images/logo.png",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/cloudnautique/vscode-acorn"
+    },
+    "main": "src/main.js",
+    "activationEvents": [
+        "onLanguage:aml",
+        "onCommand:acorn.commands.runInteractive"
+    ],
     "engines": {
         "vscode": "^1.65.0"
     },
     "contributes": {
+        "configuration": {
+            "title": "Acorn",
+            "properties": {
+                "acorn.acornPath": {
+                    "type": "string",
+                    "default": "acorn",
+                    "description": "Absolute path to Acorn client executable (`acorn` command)",
+                    "scope": "machine-overridable"
+                }
+            }
+        },
+        "commands": [
+            {
+                "command": "acorn.commands.runInteractive",
+                "title": "Run Interactive",
+                "category": "Acorn Run"
+            }
+        ],
         "languages": [
             {
                 "id": "aml",
@@ -40,7 +67,21 @@
             }
         ]
     },
+    "capabilities": {
+        "virtualWorkspaces": {
+            "supported": false
+        },
+        "untrustedWorkspaces": {
+            "supported": "limited",
+            "description": "",
+            "restrictedConfigurations": [
+                "acorn.commands.runInteractive"
+            ]
+        }
+    },
+    "dependencies": {},
     "devDependencies": {
-        "vscode": "^1.65.0"
-    }
+        "@types/vscode": "^1.69.0"
+    },
+    "scripts": {}
 }

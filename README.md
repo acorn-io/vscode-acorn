@@ -1,12 +1,39 @@
-# Basic Acornfile extension Visual Studio Code
+# (PROTOTYPE) Basic Acornfile extension Visual Studio Code
 
-## Quickstart
+**Warning** This is a prototype and not an official Acorn Labs project
 
-Until published, clone this repo and link to your VSCode extension directory
+## Installation
+
+### Prerequisites
+
+- [Acorn CLI](https://docs.acorn.io/installation/installing#acorn-cli) installed and running against a cluster
+- Have Visual Studio Code CLI tools installed
+
+### Install prototype extension
+
+1. Download the latest extension [release](https://github.com/cloudnautique/vscode-aml/releases/latest).
+1. Run
+
+```shell
+code --install-extension [PATH TO EXT]
+```
 
 ## Features
 
-This extension provides basic syntax highlighting and code snippets for containers, jobs, secrets, args, and localData.
+This extension provides basic syntax highlighting and code snippets for:
+
+- args
+- containers
+- jobs
+- secrets
+- volumes
+- localData
+
+Commands:
+
+Acorn build
+Acorn run
+Acorn run interactive
 
 ## License
 

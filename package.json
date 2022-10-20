@@ -12,7 +12,9 @@
     "main": "src/main.js",
     "activationEvents": [
         "onLanguage:aml",
-        "onCommand:acorn.commands.runInteractive"
+        "onCommand:acorn.commands.runInteractive",
+        "onCommand:acorn.commands.run",
+        "onCommand:acorn.commands.build"
     ],
     "engines": {
         "vscode": "^1.69.0"
@@ -34,6 +36,16 @@
                 "command": "acorn.commands.runInteractive",
                 "title": "Run Interactive",
                 "category": "Acorn Run"
+            },
+            {
+                "command": "acorn.commands.run",
+                "title": "Run Image",
+                "category": "Acorn Run"
+            },
+            {
+                "command": "acorn.commands.build",
+                "title": "Acorn Build Image",
+                "category": "Acorn Build"
             }
         ],
         "languages": [
@@ -75,7 +87,9 @@
             "supported": "limited",
             "description": "",
             "restrictedConfigurations": [
-                "acorn.commands.runInteractive"
+                "acorn.commands.runInteractive",
+                "acorn.commands.run",
+                "acorn.commands.build"
             ]
         }
     },

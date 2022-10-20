@@ -35,6 +35,12 @@
             "\timage: \"${2}\"",
             "}"
         ]
+    },
+    "volumes": {
+        "prefix": "volumes",
+        "body": [
+            "volumes: ${1:name}: {}"
+        ]
     }
 
 }

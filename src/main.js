@@ -1,5 +1,5 @@
-const commands = require("./commands/runInteractive");
-const vscode = require("vscode");
+const runCommands = require("./commands/runInteractive");
+const buildCommands = require("./commands/build");
 
 module.exports = {
     activate,
@@ -7,10 +7,12 @@ module.exports = {
 }
 
 function activate(context) {
-    commands.activate(context);
+    runCommands.activate(context);
+    buildCommands.activate(context);
 }
 
 function deactivate() {
-    commands.deactivate()
+    runCommands.deactivate(context);
+    buildCommands.deactivate(context);
 }
 

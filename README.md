@@ -32,8 +32,7 @@ This extension provides basic syntax highlighting and code snippets for:
 Commands:
 
 Acorn build
-Acorn run
-Acorn run interactive
+Acorn run (interactive)
 
 ## License
 

@@ -1,4 +1,41 @@
-secrets: "db-password": {
-    type: "basic"
-    data: {}
+containers: {
+    app: {
+        image: "nginx"
+        ports: publish: "80/http"
+    } 
+    mariadb: {
+        image: "mariadb"
+        env: {
+            MARIADB_ROOT_PASSWORD: "secret://testing/token"
+        }
+    }
 }
+
+secrets: {
+    "testing": {
+        type: "token"
+    }
+}
+
+
+//  "views": {
+//            "acornView": [
+//                {
+//                    "id": "acornApps",
+//                    "name": "Apps"
+//                },
+//                {
+//                    "id": "acornContainers",
+//                    "name": "Containers"
+//                }
+//            ]
+//        },
+//        "viewsContainers": {
+//            "activitybar": [
+//                {
+//                    "icon": "images/logo.png",
+//                    "id": "acornView",
+//                    "title": "Acorn"
+//                }
+//            ]
+//        },

@@ -1,10 +1,16 @@
 const vscode = require('vscode');
 const exec = require("@actions/exec");
-const util = require("util");
+const setting = require('./settings');
+
+const chan = vscode.window.createOutputChannel("acorn app");
 
 
 async function getAppList() {
-    const apps = await exec.getExecOutput('acorn', [
+    const acornCMD = vscode.workspace.getConfiguration('acorn').get('acornPath');
+    const ns = setting.getNamespace();
+    const apps = await exec.getExecOutput(acornCMD, [
+        "--namespace",
+        ns,
         "apps",
         "-q"
     ]);
@@ -17,7 +23,9 @@ async function getAppList() {
 
     let returnApps = [];
     for (const app of appNames.split("\n")) {
-        var appDetails = await exec.getExecOutput('acorn', [
+        var appDetails = await exec.getExecOutput(acornCMD, [
+            "--namespace",
+            ns,
             "apps",
             "-o",
             "json",
@@ -31,6 +39,17 @@ async function getAppList() {
     }
 
     return returnApps;
+}
+
+function getOptions(args) {
+    const ns = setting.getNamespace();
+    parsedArgs = [];
+    if (ns != "acorn") {
+        parsedArgs.push("--namespace", ns);
+    }
+    parsedArgs.push(args);
+    chan.appendLine("Args: " + parsedArgs);
+    return parsedArgs;
 }
 
 module.exports = {

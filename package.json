@@ -47,6 +47,20 @@
                 "command": "acorn.commands.build",
                 "title": "Acorn Build Image",
                 "category": "Acorn Build"
+            },
+            {
+                "command": "acornView.refreshExplorer",
+                "title": "Acorn Refresh",
+                "category": "Acorn Apps View",
+                "icon": {
+                    "light": "images/light/refresh.svg",
+                    "dark": "images/dark/refresh.svg"
+                }
+            },
+            {
+                "command": "acornView.openEndpointUrl",
+                "title": "Acorn open endpoint URL",
+                "category": "Acorn Apps View"
             }
         ],
         "languages": [
@@ -87,12 +101,37 @@
                 }
             ]
         },
+        "viewsWelcome": [
+            {
+                "view": "acornApps",
+                "contents": "No Acorn Apps are running in this namespace."
+            }
+        ],
         "viewsContainers": {
             "activitybar": [
                 {
                     "icon": "images/logo.png",
                     "id": "acornView",
                     "title": "Acorn"
+                }
+            ]
+        },
+        "menus": {
+            "view/title": [
+                {
+                    "command": "acornView.refreshExplorer",
+                    "when": "view == acornApps",
+                    "group": "navigation"
+                }
+            ],
+            "commandPalette": [
+                {
+                    "command": "acornView.refreshExplorer",
+                    "when": "view == acornApps"
+                },
+                {
+                    "command": "acornView.openEndpointUrl",
+                    "when": "view == acornApps"
                 }
             ]
         }

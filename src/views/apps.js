@@ -1,20 +1,24 @@
 const vscode = require('vscode');
 const apps = require('../acorn/apps');
 const util = require('util');
-const chan = vscode.window.createOutputChannel("Acorn AppData");
+
+//const chan = vscode.window.createOutputChannel("Acorn AppData");
 
 async function activate(context) {
+    const view = drawAppView();
+    context.subscriptions.push(view);
+}
+
+async function drawAppView() {
     const appList = await apps.getAppList();
-    //chan.appendLine(util.inspect(appList, { depth: null }));
 
     let appData = new AppData(appList);
     const view = vscode.window.createTreeView('acornApps', {
         treeDataProvider: appData,
         showCollapseAll: true
     });
-    context.subscriptions.push(view);
+    return view;
 }
-
 class AppData {
     constructor(appList) {
         this.appData = Array.from(appList);
@@ -46,7 +50,7 @@ class AppData {
             );
         });
 
-        chan.appendLine(util.inspect(array, { depth: null }));
+        //chan.appendLine(util.inspect(array, { depth: null }));
         return array;
     }
 
@@ -62,6 +66,13 @@ class AppTreeItem {
     getChildren() {
         return this.children;
     }
+
+    setCommand(commandId, args) {
+        this.command = {
+            command: commandId,
+            arguments: args
+        };
+    }
 }
 
 function appEndpointTreeItems(app) {
@@ -70,7 +81,13 @@ function appEndpointTreeItems(app) {
     let endpoints = [];
     if (e !== undefined) {
         e.forEach(endpoint => {
-            endpoints.push(new AppTreeItem(`${endpoint.address} => ${endpoint.target}:${endpoint.targetPort}`, null, vscode.TreeItemCollapsibleState.None));
+            if (endpoint.address !== undefined) {
+                const addr = new AppTreeItem(endpoint.address, null, vscode.TreeItemCollapsibleState.None);
+                addr.setCommand("acornView.openEndpointUrl", ["http://" + endpoint.address]);
+                endpoints.push(new AppTreeItem(`${endpoint.target}:${endpoint.targetPort}`, [addr], vscode.TreeItemCollapsibleState.Collapsed));
+            } else {
+                endpoints.push(new AppTreeItem(`${endpoint.target}:${endpoint.targetPort}`, null, vscode.TreeItemCollapsibleState.None));
+            }
         });
     }
 
@@ -118,4 +135,5 @@ function appSecretTreeItems(app) {
 
 module.exports = {
     activate,
+    drawAppView,
 }

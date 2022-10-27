@@ -28,6 +28,7 @@ function activate(context) {
             if (tag !== "") {
                 elements.push("-t"); elements.push(tag);
                 const push = await vscode.window.showInputBox({
+                    prompt: "Push to registry?",
                     valueSelection: ['no', 'yes'],
                     placeHolder: 'no',
                 });

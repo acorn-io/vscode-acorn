@@ -3,7 +3,7 @@
     "displayName": "vscode-acorn",
     "description": "Syntax and completion of Acorn AML files",
     "publisher": "Acorn Labs",
-    "version": "0.0.1-alpha3",
+    "version": "0.0.2-alpha0",
     "icon": "images/logo.png",
     "repository": {
         "type": "git",

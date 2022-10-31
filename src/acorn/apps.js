@@ -41,17 +41,6 @@ async function getAppList() {
     return returnApps;
 }
 
-function getOptions(args) {
-    const ns = setting.getNamespace();
-    parsedArgs = [];
-    if (ns != "acorn") {
-        parsedArgs.push("--namespace", ns);
-    }
-    parsedArgs.push(args);
-    chan.appendLine("Args: " + parsedArgs);
-    return parsedArgs;
-}
-
 module.exports = {
     getAppList,
 }

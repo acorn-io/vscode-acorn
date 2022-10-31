@@ -1,38 +1,29 @@
-# (PROTOTYPE) Basic Acornfile extension Visual Studio Code
-
-**Warning** This is a prototype and not an official Acorn Labs project
-
-## Installation
-
-### Prerequisites
-
-- [Acorn CLI](https://docs.acorn.io/installation/installing#acorn-cli) installed and running against a cluster
-- Have Visual Studio Code CLI tools installed
-
-### Install prototype extension
-
-1. Download the latest extension [release](https://github.com/cloudnautique/vscode-aml/releases/latest).
-1. Run
-
-```shell
-code --install-extension [PATH TO EXT]
-```
+# Acorn Visual Studio Code extension
 
 ## Features
 
-This extension provides basic syntax highlighting and code snippets for:
+This extension is for developers authoring or working with Acorn applications.
 
-- args
-- containers
-- jobs
-- secrets
-- volumes
-- localData
+Features include:
 
-Commands:
+- Syntax highlighting for Acornfiles
+- Browse Acorn applications running in the cluster
+- Connect to published endpoints
+- Run Acorn build command
+- Run/Start an acorn app with Acorn run (interactive)
 
-Acorn build
-Acorn run (interactive)
+## Dependencies
+
+- [Acorn CLI](https://docs.acorn.io/installation/installing#acorn-cli) installed and running against a cluster
+
+## Commands for running Acorn apps
+
+- `Acorn Run: Interactive` - Run the Acorn app from Acornfile in interactive mode.
+- `Acorn Run: Image` - Run provided Acorn image.
+
+## Commands for building Acorn images
+
+- `Acorn Build: Image` - Build an Acorn image from the Acornfile in the root of the workspace.
 
 ## License
 

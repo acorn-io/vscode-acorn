@@ -1,13 +1,13 @@
 {
     "name": "acorn",
     "displayName": "vscode-acorn",
-    "description": "Syntax and completion of Acorn AML files",
+    "description": "Plugin for working with Acornfiles and Acorn apps.",
     "publisher": "Acorn Labs",
     "version": "0.0.2-alpha0",
     "icon": "images/logo.png",
     "repository": {
         "type": "git",
-        "url": "https://github.com/cloudnautique/vscode-acorn"
+        "url": "https://github.com/acorn-io/vscode-acorn"
     },
     "main": "src/main.js",
     "activationEvents": [
@@ -35,17 +35,17 @@
         "commands": [
             {
                 "command": "acorn.commands.runInteractive",
-                "title": "Run Interactive",
+                "title": "Interactive",
                 "category": "Acorn Run"
             },
             {
                 "command": "acorn.commands.run",
-                "title": "Run Image",
+                "title": "Image",
                 "category": "Acorn Run"
             },
             {
                 "command": "acorn.commands.build",
-                "title": "Acorn Build Image",
+                "title": "Image",
                 "category": "Acorn Build"
             },
             {
@@ -110,9 +110,9 @@
         "viewsContainers": {
             "activitybar": [
                 {
-                    "icon": "images/logo.png",
                     "id": "acornView",
-                    "title": "Acorn"
+                    "title": "Acorn",
+                    "icon": "images/dark/acorn_logo.png"
                 }
             ]
         },

@@ -16,9 +16,6 @@ jobs:
       # Run install dependencies
       - name: Install dependencies
         run: npm install
-      # Run tests
-      - name: Build
-        run: npm run compile
       - name: Get current package version
         id: package_version
         uses: martinbeentjes/npm-get-version-action@v1.1.0

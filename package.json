@@ -2,7 +2,7 @@
     "name": "acorn",
     "displayName": "vscode-acorn",
     "description": "Plugin for working with Acornfiles and Acorn apps.",
-    "publisher": "Acorn Labs",
+    "publisher": "Acorn-Labs",
     "version": "0.1.0",
     "icon": "images/logo.png",
     "repository": {

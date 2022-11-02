@@ -1,10 +1,20 @@
 {
     "name": "acorn",
-    "displayName": "vscode-acorn",
+    "displayName": "Acorn",
     "description": "Plugin for working with Acornfiles and Acorn apps.",
     "publisher": "Acorn-Labs",
     "version": "0.1.0",
     "icon": "images/logo.png",
+    "categories": [
+        "Programming Languages",
+        "Other",
+        "Snippets"
+    ],
+    "keywords": [
+        "containers",
+        "Kubernetes",
+        "aml"
+    ],
     "repository": {
         "type": "git",
         "url": "https://github.com/acorn-io/vscode-acorn"

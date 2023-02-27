@@ -7,7 +7,7 @@ async function activate(context) {
 }
 
 async function drawProjectView() {
-    const projectList = await prjCommand.getProjectList(pChan);
+    const projectList = await prjCommand.getProjectList();
 
     let projectData = new ProjectData(projectList);
     const view = vscode.window.createTreeView('acornProjects', {

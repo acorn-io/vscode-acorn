@@ -1,5 +1,6 @@
 const vscode = require('vscode');
-const view = require('./apps');
+const appView = require('./apps');
+const prjView = require('./projects');
 
 const refreshCommand = "acornView.refreshExplorer";
 
@@ -7,12 +8,19 @@ function activate(context) {
     vscode.commands.registerCommand(
         refreshCommand,
         function () {
-            const w = view.drawAppView();
+            appView.drawAppView();
+            prjView.drawProjectView();
         }
     );
     context.subscriptions.push(refreshCommand);
 }
 
+function refreshAllPanes() {
+    prjView.drawProjectView();
+    appView.drawAppView();
+}
+
 module.exports = {
     activate,
+    refreshAllPanes,
 }

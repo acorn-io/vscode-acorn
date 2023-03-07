@@ -83,7 +83,7 @@ function appEndpointTreeItems(app) {
         e.forEach(endpoint => {
             if (endpoint.address !== undefined) {
                 const addr = new AppTreeItem(endpoint.address, null, vscode.TreeItemCollapsibleState.None);
-                addr.setCommand("acornView.openEndpointUrl", ["http://" + endpoint.address]);
+                addr.setCommand("acornView.openEndpointUrl", [endpoint.publishProtocol + "://" + endpoint.address]);
                 endpoints.push(new AppTreeItem(`${endpoint.target}:${endpoint.targetPort}`, [addr], vscode.TreeItemCollapsibleState.Collapsed));
             } else {
                 endpoints.push(new AppTreeItem(`${endpoint.target}:${endpoint.targetPort}`, null, vscode.TreeItemCollapsibleState.None));

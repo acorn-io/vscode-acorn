@@ -25,6 +25,8 @@
         "onCommand:acorn.commands.runInteractive",
         "onCommand:acorn.commands.run",
         "onCommand:acorn.commands.build",
+        "onCommand:acorn.commands.login",
+        "onCommand:acorn.commands.logout",
         "onView:acornApps",
         "onView:acornProjects"
     ],
@@ -46,18 +48,28 @@
         "commands": [
             {
                 "command": "acorn.commands.runInteractive",
-                "title": "Interactive",
-                "category": "Acorn Run"
+                "title": "Run Interactive",
+                "category": "Acorn"
             },
             {
                 "command": "acorn.commands.run",
-                "title": "Image",
-                "category": "Acorn Run"
+                "title": "Run Image",
+                "category": "Acorn"
             },
             {
                 "command": "acorn.commands.build",
-                "title": "Image",
-                "category": "Acorn Build"
+                "title": "Build Image",
+                "category": "Acorn"
+            },
+            {
+                "command": "acorn.commands.login",
+                "title": "Login",
+                "category": "Acorn"
+            },
+            {
+                "command": "acorn.commands.logout",
+                "title": "Logout",
+                "category": "Acorn"
             },
             {
                 "command": "acornView.refreshExplorer",

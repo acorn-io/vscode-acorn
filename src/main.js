@@ -1,5 +1,6 @@
 const runCommands = require("./commands/runInteractive");
 const buildCommands = require("./commands/build");
+const authCommands = require("./commands/auth");
 const view = require("./views/apps");
 const viewutils = require("./views/utils");
 const viewRefresh = require("./views/refresh");
@@ -17,10 +18,12 @@ function activate(context) {
     viewRefresh.activate(context);
     viewutils.activate(context);
     viewProjects.activate(context);
+    authCommands.activate(context);
 }
 
 function deactivate() {
     runCommands.deactivate(context);
     buildCommands.deactivate(context);
+    authCommands.deactivate(context);
 }
 

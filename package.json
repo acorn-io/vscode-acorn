@@ -3,7 +3,7 @@
     "displayName": "Acorn",
     "description": "Plugin for working with Acornfiles and Acorn apps.",
     "publisher": "Acorn-Labs",
-    "version": "0.2.1",
+    "version": "0.3.0",
     "icon": "images/logo.png",
     "categories": [
         "Programming Languages",

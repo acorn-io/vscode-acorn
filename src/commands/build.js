@@ -1,5 +1,5 @@
-const vscode = require("vscode")
-const { getTerminalByName } = require("./runInteractive")
+const vscode = require("vscode");
+const { getTerminalByName } = require("./utils");
 
 function activate(context) {
     const buildCommandID = "acorn.commands.build";

@@ -1,4 +1,6 @@
-const vscode = require("vscode")
+const vscode = require("vscode");
+const { getTerminalByName } = require("./utils");
+
 
 function activate(context) {
     const runCommandID = "acorn.commands.run";
@@ -8,7 +10,6 @@ function activate(context) {
 
 
     let binary = vscode.workspace.getConfiguration('acorn').get('acornPath');
-    let stream = vscode.window.createOutputChannel('Acorn');
 
     let runInteractiveCMD = vscode.commands.registerCommand(
         interactiveRunCommandID,
@@ -65,20 +66,9 @@ function deactivate() { }
 module.exports = {
     activate,
     deactivate,
-    getTerminalByName,
 }
 
 function runImage(term, command) {
     term.show();
     term.sendText(command);
-}
-
-function getTerminalByName(name) {
-    let terminals = vscode.window.terminals;
-
-    let term = terminals.find(t => t.name === name);
-    if (typeof term !== "undefined") {
-        return term;
-    }
-    return undefined;
 }

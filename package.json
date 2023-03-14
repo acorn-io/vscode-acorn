@@ -25,6 +25,7 @@
         "onCommand:acorn.commands.runInteractive",
         "onCommand:acorn.commands.run",
         "onCommand:acorn.commands.build",
+        "onCommand:acorn.commands.viewAppLogs",
         "onCommand:acorn.commands.login",
         "onCommand:acorn.commands.logout",
         "onView:acornApps",
@@ -62,6 +63,11 @@
                 "category": "Acorn"
             },
             {
+                "command": "acorn.commands.viewAppLogs",
+                "title": "View Logs",
+                "category": "Acorn"
+            },
+            {
                 "command": "acorn.commands.login",
                 "title": "Login",
                 "category": "Acorn"
@@ -83,6 +89,11 @@
             {
                 "command": "acornView.openEndpointUrl",
                 "title": "Acorn open endpoint URL",
+                "category": "Acorn Apps View"
+            },
+            {
+                "command": "acornView.viewAppLogs",
+                "title": "View Logs",
                 "category": "Acorn Apps View"
             },
             {
@@ -161,6 +172,11 @@
                     "command": "acornView.setDefaultProject",
                     "when": "view == acornProjects",
                     "group": "projects_inline"
+                },
+                {
+                    "command": "acornView.viewAppLogs",
+                    "when": "view == acornApps",
+                    "group": "apps_inline"
                 }
             ],
             "commandPalette": [
@@ -170,6 +186,10 @@
                 },
                 {
                     "command": "acornView.openEndpointUrl",
+                    "when": "view == acornApps"
+                },
+                {
+                    "command": "acornView.viewAppLogs",
                     "when": "view == acornApps"
                 },
                 {

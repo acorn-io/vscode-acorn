@@ -1,9 +1,11 @@
 const vscode = require("vscode");
+const { viewAppLogs } = require("../commands/logs");
 const acornProject = require("../acorn/projects");
 const refresh = require('../views/refresh')
 
 const openEndpointURL = "acornView.openEndpointUrl";
 const setDefaultProject = "acornView.setDefaultProject";
+const viewAppLogsView = "acornView.viewAppLogs";
 
 function activate(context) {
     let openURLCMD = vscode.commands.registerCommand(
@@ -25,6 +27,14 @@ function activate(context) {
         }
     );
     context.subscriptions.push(setDefaultProjectCMD);
+
+    let viewAppLogsViewCMD = vscode.commands.registerCommand(
+        viewAppLogsView,
+        function (selection) {
+            viewAppLogs(selection.label);
+        }
+    );
+    context.subscriptions.push(viewAppLogsViewCMD);
 }
 
 module.exports = {

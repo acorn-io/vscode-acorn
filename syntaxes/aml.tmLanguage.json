@@ -29,7 +29,7 @@
             "patterns": [
                 {
                     "name": "keyword.control.aml",
-                    "match": "\\b(if|in|for|let|containers|secrets|jobs|localData|args|volumes|std)\\b"
+                    "match": "\\b(if|in|for|let|containers|secrets|jobs|localData|args|volumes|std|services|acorns|images)\\b"
                 },
                 {
                     "name": "keyword.value.aml",

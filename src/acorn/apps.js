@@ -10,19 +10,23 @@ async function getAppList() {
     ]);
 
     if (apps.exitCode !== 0) {
-        vscode.window.showErrorMessage("could not get apps");
+        vscode.window.showErrorMessage("could not get acorns");
         return [];
     }
-    const appNames = apps.stdout.trim();
 
-    let returnApps = [];
-    if (appNames.length != 0) {
-        for (const app of appNames.split("\n\n")) {
-            returnApps.push(JSON.parse(app));
-        }
+    if (apps.stdout.trim() === "") {
+        return [];
     }
 
-    return returnApps;
+    let appNames = [];
+    try {
+        appNames = JSON.parse(apps.stdout.trim());
+    } catch (e) {
+        vscode.window.showErrorMessage("could not get acorns");
+        return [];
+    }
+
+    return appNames.items;
 }
 
 module.exports = {

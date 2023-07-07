@@ -8,9 +8,11 @@
     "categories": [
         "Programming Languages",
         "Other",
+        "Formatters",
         "Snippets"
     ],
     "keywords": [
+        "acorn",
         "containers",
         "Kubernetes",
         "aml"
@@ -97,6 +99,11 @@
                 "category": "Acorn Apps View"
             },
             {
+                "command": "acornView.viewContainerLogs",
+                "title": "View Container Logs",
+                "category": "Acorn Apps View"
+            },
+            {
                 "command": "acornView.setDefaultProject",
                 "title": "Set as Default",
                 "category": "Acorn Projects View"
@@ -104,31 +111,36 @@
         ],
         "languages": [
             {
-                "id": "aml",
+                "id": "acorn",
                 "aliases": [
-                    "aml"
+                    "aml",
+                    "acorn",
+                    "acornfile"
                 ],
                 "extensions": [
-                    ".aml"
+                    ".aml",
+                    ".acorn",
+                    ".acornfile"
                 ],
                 "filenamePatterns": [
                     "Acornfile",
                     "Acornfile.*",
-                    "*.acornfile"
+                    "*.acornfile",
+                    "*.acorn"
                 ],
                 "configuration": "./language-configuration.json"
             }
         ],
         "grammars": [
             {
-                "language": "aml",
-                "scopeName": "source.aml",
-                "path": "./syntaxes/aml.tmLanguage.json"
+                "language": "acorn",
+                "scopeName": "source.acorn",
+                "path": "./syntaxes/acorn.tmLanguage.json"
             }
         ],
         "snippets": [
             {
-                "language": "aml",
+                "language": "acorn",
                 "path": "./snippets/acornfile.json"
             }
         ],
@@ -136,7 +148,7 @@
             "acornView": [
                 {
                     "id": "acornApps",
-                    "name": "Apps"
+                    "name": "Acorns"
                 },
                 {
                     "id": "acornProjects",
@@ -148,6 +160,10 @@
             {
                 "view": "acornApps",
                 "contents": "No Acorn Apps are running in this namespace."
+            },
+            {
+                "view": "acornProjects",
+                "contents": "No Acorn Projects defined, are you logged in?"
             }
         ],
         "viewsContainers": {
@@ -175,7 +191,12 @@
                 },
                 {
                     "command": "acornView.viewAppLogs",
-                    "when": "view == acornApps",
+                    "when": "view == acornApps && viewItem == app",
+                    "group": "apps_inline"
+                },
+                {
+                    "command": "acornView.viewContainerLogs",
+                    "when": "view == acornApps && viewItem == container",
                     "group": "apps_inline"
                 }
             ],
@@ -190,6 +211,10 @@
                 },
                 {
                     "command": "acornView.viewAppLogs",
+                    "when": "view == acornApps"
+                },
+                {
+                    "command": "acornView.viewContainerLogs",
                     "when": "view == acornApps"
                 },
                 {

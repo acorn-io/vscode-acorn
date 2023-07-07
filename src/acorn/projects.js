@@ -13,16 +13,16 @@ async function getProjectList() {
         vscode.window.showErrorMessage()
         return [];
     }
-    const projectNames = projects.stdout.trim();
 
-    let returnProjects = [];
-    if (projectNames.lenth != 0) {
-        for (const project of projectNames.split("\n\n")) {
-            returnProjects.push(JSON.parse(project));
-        }
+    let projectNames = [];
+    try {
+        projectNames = JSON.parse(projects.stdout.trim());
+    } catch (e) {
+        vscode.window.showErrorMessage("could not get projects");
+        return [];
     }
 
-    return returnProjects;
+    return projectNames.items;
 }
 
 async function useProject(project) {

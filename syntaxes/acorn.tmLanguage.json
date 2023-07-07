@@ -1,6 +1,6 @@
 {
-    "scopeName": "source.aml",
-    "name": "aml",
+    "scopeName": "source.acorn",
+    "name": "acorn",
     "patterns": [
         {
             "include": "#whitespace"
@@ -28,47 +28,47 @@
         "keywords": {
             "patterns": [
                 {
-                    "name": "keyword.control.aml",
-                    "match": "\\b(if|in|for|let|containers|secrets|jobs|localData|args|volumes|std|services|acorns|images)\\b"
+                    "name": "keyword.control.acorn",
+                    "match": "\\b(if|in|for|let|containers|secrets|jobs|localData|args|volumes|std|services|acorns|images|profiles|routers|labels|annotations)\\b"
                 },
                 {
-                    "name": "keyword.value.aml",
+                    "name": "keyword.value.acorn",
                     "match": "\\b(null|true|false)\\b"
                 },
                 {
-                    "name": "keyword.preamble.aml",
+                    "name": "keyword.preamble.acorn",
                     "match": "\\b(package|import)\\b"
                 },
                 {
                     "match": "[\\+\\-\\*]|/(?![/*])",
-                    "name": "keyword.operator.aml"
+                    "name": "keyword.operator.acorn"
                 },
                 {
                     "match": "(?<![\\p{L}\\p{Nd}_\\$\\#])(?:div|mod|quo|rem)(?![\\p{L}\\p{Nd}_\\$\\#])",
-                    "name": "keyword.operator.word.aml"
+                    "name": "keyword.operator.word.acorn"
                 },
                 {
                     "match": "=[=~]|![=~]|<=|>=|[<](?![-=])|[>](?![=])",
-                    "name": "keyword.operator.comparison.aml"
+                    "name": "keyword.operator.comparison.acorn"
                 },
                 {
                     "match": "&{2}|\\|{2}|!(?![=~])",
-                    "name": "keyword.operator.logical.aml"
+                    "name": "keyword.operator.logical.acorn"
                 },
                 {
                     "match": "&(?!&)|\\|(?!\\|)",
-                    "name": "keyword.operator.set.aml"
+                    "name": "keyword.operator.set.acorn"
                 }
             ]
         },
         "declarations": {
             "patterns": [
                 {
-                    "name": "support.type.property-name.aml",
+                    "name": "support.type.property-name.acorn",
                     "match": "(#\\w*)"
                 },
                 {
-                    "name": "variable.parameter.aml",
+                    "name": "variable.parameter.acorn",
                     "match": "(\\w*?):"
                 }
             ]
@@ -79,26 +79,26 @@
                     "begin": "/\\*\\*(?!/)",
                     "captures": {
                         "0": {
-                            "name": "punctuation.definition.comment.aml"
+                            "name": "punctuation.definition.comment.acorn"
                         }
                     },
                     "end": "\\*/",
-                    "name": "comment.block.documentation.aml"
+                    "name": "comment.block.documentation.acorn"
                 },
                 {
                     "begin": "/\\*",
                     "captures": {
                         "0": {
-                            "name": "punctuation.definition.comment.aml"
+                            "name": "punctuation.definition.comment.acorn"
                         }
                     },
                     "end": "\\*/",
-                    "name": "comment.block.aml"
+                    "name": "comment.block.acorn"
                 },
                 {
                     "captures": {
                         "1": {
-                            "name": "punctuation.definition.comment.aml"
+                            "name": "punctuation.definition.comment.acorn"
                         }
                     },
                     "match": "(//).*$\\n?",
@@ -110,37 +110,37 @@
             "patterns": [
                 {
                     "match": "(?<![\\p{L}\\p{Nd}_\\$\\#])_(?!\\|)(?![\\p{L}\\p{Nd}_\\$\\#])",
-                    "name": "constant.language.top.aml"
+                    "name": "constant.language.top.acorn"
                 },
                 {
                     "match": "(?<![\\p{L}\\p{Nd}_\\$\\#])_\\|_(?![\\p{L}\\p{Nd}_\\$\\#])",
-                    "name": "constant.language.bottom.aml"
+                    "name": "constant.language.bottom.acorn"
                 },
                 {
                     "match": "(?<![\\p{L}\\p{Nd}_\\$\\#])null(?![\\p{L}\\p{Nd}_\\$\\#])",
-                    "name": "constant.language.null.aml"
+                    "name": "constant.language.null.acorn"
                 },
                 {
                     "match": "\\b((0(x|X)[0-9a-fA-F_]*)|(([0-9][0-9_]*\\.[0-9][0-9_]*)|(\\.[0-9][0-9_]*))((e|E)(\\+|-)?[0-9][0-9_]*)?|[0-9][0-9_]*)([LlFfDd]|UL|ul)?\\b",
-                    "name": "constant.numeric.aml"
+                    "name": "constant.numeric.acorn"
                 }
             ]
         },
         "primitives": {
             "patterns": [
                 {
-                    "name": "storage.type.aml",
+                    "name": "storage.type.acorn",
                     "match": "\\b(null|bool|string|bytes|number|int|float|struct|list)\\b"
                 }
             ]
         },
         "strings": {
-            "name": "string.quoted.double.aml",
+            "name": "string.quoted.double.acorn",
             "begin": "\"",
             "end": "\"",
             "patterns": [
                 {
-                    "name": "constant.character.escape.aml",
+                    "name": "constant.character.escape.acorn",
                     "match": "\\\\."
                 }
             ]

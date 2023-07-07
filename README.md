@@ -7,14 +7,26 @@ This extension is for developers authoring or working with Acorn applications.
 Features include:
 
 - Syntax highlighting for Acornfiles
+- Formatting for Acornfiles
 - Browse Acorn applications running in the cluster
 - Connect to published endpoints
 - Run Acorn build command
 - Run/Start an acorn app with Acorn run (interactive)
+- View app and container logs
 
 ## Dependencies
 
 - [Acorn CLI](https://docs.acorn.io/installation/installing#acorn-cli) installed and running against a cluster
+
+## Format on Save
+
+To enable format on save, add the following to your settings.json file:
+
+```json
+[acorn]: {
+    "editor.formatOnSave": true
+}
+```
 
 ## Commands for running Acorn apps
 

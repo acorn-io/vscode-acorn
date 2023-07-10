@@ -25,6 +25,8 @@ class AppData {
         this.appTreeItems = this.convertAppsToTreeItems();
     }
 
+    contextValue = "app";
+
     getChildren(element) {
         if (!element) {
             return this.appTreeItems;
@@ -45,15 +47,15 @@ class AppData {
             appChildren.push(new AppTreeItem("Containers", appContainerTreeItems(element), vscode.TreeItemCollapsibleState.Collapsed));
             appChildren.push(new AppTreeItem("Volumes", appVolumeTreeItems(element), vscode.TreeItemCollapsibleState.Collapsed));
             appChildren.push(new AppTreeItem("Secrets", appSecretTreeItems(element), vscode.TreeItemCollapsibleState.Collapsed));
-            array.push(
-                new AppTreeItem(element.metadata.name, appChildren, vscode.TreeItemCollapsibleState.Collapsed)
-            );
-        });
 
+            array.push(
+                new AcornAppItem(element.metadata.name, appChildren, vscode.TreeItemCollapsibleState.Collapsed)
+            );
+
+        });
         //chan.appendLine(util.inspect(array, { depth: null }));
         return array;
     }
-
 };
 
 class AppTreeItem {
@@ -75,18 +77,41 @@ class AppTreeItem {
     }
 }
 
+
+class AcornAppItem extends AppTreeItem {
+    constructor(name, children, collapsibleState) {
+        super(name, children, collapsibleState);
+    }
+    contextValue = "app";
+}
+
+class AppEndpointTreeItem extends AppTreeItem {
+    constructor(name, children, collapsibleState) {
+        super(name, children, collapsibleState);
+    }
+    contextValue = "endpoint";
+}
+
+class AppContainerTreeItem extends AppTreeItem {
+    constructor(name, children, collapsibleState, appName) {
+        super(name, children, collapsibleState);
+        this.appName = appName;
+    }
+    contextValue = "container";
+}
+
 function appEndpointTreeItems(app) {
-    let e = app.status.endpoints;
+    let e = app.status.appStatus.endpoints;
 
     let endpoints = [];
     if (e !== undefined) {
         e.forEach(endpoint => {
             if (endpoint.address !== undefined) {
-                const addr = new AppTreeItem(endpoint.address, null, vscode.TreeItemCollapsibleState.None);
+                const addr = new AppEndpointTreeItem(endpoint.address, null, vscode.TreeItemCollapsibleState.None);
                 addr.setCommand("acornView.openEndpointUrl", [endpoint.publishProtocol + "://" + endpoint.address]);
-                endpoints.push(new AppTreeItem(`${endpoint.target}:${endpoint.targetPort}`, [addr], vscode.TreeItemCollapsibleState.Collapsed));
+                endpoints.push(new AppEndpointTreeItem(`${endpoint.target}:${endpoint.targetPort}`, [addr], vscode.TreeItemCollapsibleState.Collapsed));
             } else {
-                endpoints.push(new AppTreeItem(`${endpoint.target}:${endpoint.targetPort}`, null, vscode.TreeItemCollapsibleState.None));
+                endpoints.push(new AppEndpointTreeItem(`${endpoint.target}:${endpoint.targetPort}`, null, vscode.TreeItemCollapsibleState.None));
             }
         });
     }
@@ -95,12 +120,13 @@ function appEndpointTreeItems(app) {
 }
 
 function appContainerTreeItems(app) {
-    let c = app.status.appSpec.containers;
+    let c = app.status.appStatus.containers;
+    let appName = app.metadata.name;
 
     let containers = [];
     if (c !== undefined) {
         Object.keys(c).forEach(container => {
-            containers.push(new AppTreeItem(container, null, vscode.TreeItemCollapsibleState.None));
+            containers.push(new AppContainerTreeItem(container, null, vscode.TreeItemCollapsibleState.None, appName));
         });
     }
 

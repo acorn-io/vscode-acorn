@@ -10,7 +10,7 @@ function activate(context) {
             const app = await vscode.window.showInputBox({
                 "prompt": "App Name",
             })
-            viewAppLogs(app);
+            viewLogs(app, "");
         }
     );
     context.subscriptions.push(viewAppLogsCMD);
@@ -18,19 +18,27 @@ function activate(context) {
 
 module.exports = {
     activate,
-    viewAppLogs,
+    viewLogs,
 }
 
-function viewAppLogs(app) {
+function viewLogs(app, container) {
     let binary = vscode.workspace.getConfiguration('acorn').get('acornPath');
-    let term = getTerminalByName(app + "-logs");
+
+    let command = binary + " " + "logs " + app + " -f";
+    let terminalName = app + "-logs";
+
+    if (container !== "") {
+        command += " -c " + container;
+        terminalName = app + "-" + container + "-logs";
+    }
+
+    let term = getTerminalByName(terminalName);
     if (typeof term !== "undefined") {
         term.show();
         return;
     }
 
-    term = vscode.window.createTerminal(app + "-logs");
-    let command = binary + " " + "logs -f " + app;
+    term = vscode.window.createTerminal(terminalName);
     startStreamLogs(term, command);
 }
 

@@ -39,8 +39,8 @@ class ProjectData {
         let array = [];
         this.projectData.forEach((element) => {
             let projectChildren = [];
-            let name = element.name;
-            if (element.default) {
+            let name = element.metadata.annotations["project-name"];
+            if (element.metadata.annotations["default-project"] === "true") {
                 name = "* " + name
             }
             const item = new ProjectTreeItem(name, projectChildren, vscode.TreeItemCollapsibleState.None)

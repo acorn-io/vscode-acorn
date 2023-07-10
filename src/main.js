@@ -6,6 +6,7 @@ const view = require("./views/apps");
 const viewutils = require("./views/utils");
 const viewRefresh = require("./views/refresh");
 const viewProjects = require("./views/projects");
+const format = require("./language/fmt");
 
 module.exports = {
     activate,
@@ -21,6 +22,7 @@ function activate(context) {
     viewRefresh.activate(context);
     viewutils.activate(context);
     viewProjects.activate(context);
+    format.activate(context);
 }
 
 function deactivate() {

@@ -29,15 +29,11 @@
             "patterns": [
                 {
                     "name": "keyword.control.acorn",
-                    "match": "\\b(if|in|for|let|containers|secrets|jobs|localData|args|volumes|std|services|acorns|images|profiles|routers|labels|annotations)\\b"
+                    "match": "\\b(if|in|for|let|containers|secrets|jobs|localData|args|volumes|std|services|acorns|images|profiles|routers|labels|annotations|return|else|skip|break)\\b"
                 },
                 {
                     "name": "keyword.value.acorn",
                     "match": "\\b(null|true|false)\\b"
-                },
-                {
-                    "name": "keyword.preamble.acorn",
-                    "match": "\\b(package|import)\\b"
                 },
                 {
                     "match": "[\\+\\-\\*]|/(?![/*])",
@@ -76,26 +72,6 @@
         "comments": {
             "patterns": [
                 {
-                    "begin": "/\\*\\*(?!/)",
-                    "captures": {
-                        "0": {
-                            "name": "punctuation.definition.comment.acorn"
-                        }
-                    },
-                    "end": "\\*/",
-                    "name": "comment.block.documentation.acorn"
-                },
-                {
-                    "begin": "/\\*",
-                    "captures": {
-                        "0": {
-                            "name": "punctuation.definition.comment.acorn"
-                        }
-                    },
-                    "end": "\\*/",
-                    "name": "comment.block.acorn"
-                },
-                {
                     "captures": {
                         "1": {
                             "name": "punctuation.definition.comment.acorn"
@@ -130,7 +106,7 @@
             "patterns": [
                 {
                     "name": "storage.type.acorn",
-                    "match": "\\b(null|bool|string|bytes|number|int|float|struct|list)\\b"
+                    "match": "\\b(null|bool|string|number|int|array|object)\\b"
                 }
             ]
         },
